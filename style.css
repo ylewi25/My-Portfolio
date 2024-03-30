@@ -723,7 +723,7 @@ html::-webkit-scrollbar-track {
     padding: 1rem;
     border-radius: 20px;
     background: var(--body-color);
-    width: 250px;
+    max-width: 250px;
     transition: 0.2s;
     border: 1px solid #4D4855;
 }
@@ -1111,6 +1111,15 @@ html::-webkit-scrollbar-track {
     }
     #back-to-top.active {
         bottom: 2rem;
+    }
+}
+@media(max-width:531px) {
+    .project-cards {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .project-card {
+        width: auto;
     }
 }
 @media screen and (max-width:250px) {
