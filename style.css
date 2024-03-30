@@ -108,6 +108,7 @@ html::-webkit-scrollbar-track {
 
 .header-container {
     display: flex;
+    gap: 2rem;
     justify-content: space-between;
     align-items: center;
     max-width: 1120px;
@@ -254,6 +255,7 @@ html::-webkit-scrollbar-track {
     cursor: pointer;
     font-size: var(--normal-font-size);
     transition: 0.3s;
+    text-wrap: nowrap;
 }
 
 .home-slide .button {
@@ -472,6 +474,10 @@ html::-webkit-scrollbar-track {
     width: 35px;
 }
 
+#react {
+    width: 65px;
+}
+
 /* =========================== SERVICE SLIDE ============================== */
 .service-slide {
     width: 100dvw;
@@ -667,11 +673,88 @@ html::-webkit-scrollbar-track {
     list-style-type: circle;
 }
 
+/* =========================== PROJECT SLIDE ============================== */
+.project-slide {
+    min-height: 100svh;
+    width: 100dvw;
+    background: var(--container-color);
+    padding-block: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.project-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1120px;
+    width: 97%;
+}
+
+.project-slide small {
+    font-size: var(--h3-font-size);
+    font-weight: var(--font-semi-bold);
+    color: var(--title-color);
+}
+
+.project-slide small span {
+    color: var(--first-color-alt);
+}
+
+.project-title {
+    font-size: var(--h1-font-size);
+    color: var(--title-color);
+    font-weight: var(--font-semi-bold);
+}
+
+.project-cards {
+    display: flex;
+    justify-content: flex-start;
+    gap: 1rem;
+    margin-top: 3.5rem;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.project-card {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    border-radius: 20px;
+    background: var(--body-color);
+    width: 250px;
+    transition: 0.2s;
+    border: 1px solid #4D4855;
+}
+
+.project-card img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: inherit;
+}
+
+.card-title {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.project-card .card-desc {
+    font-size: 13px;
+    color: var(--text-color);
+}
+
+.project-card:hover {
+    box-shadow: 2px 2px 10px var(--first-color);
+}
+
+
 /* =========================== CONTACT SLIDE ============================== */
 .contact-slide {
     width: 100dvw;
     min-height: 100svh;
-    background: var(--container-color);
+    background: var(--body-color);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -687,7 +770,7 @@ html::-webkit-scrollbar-track {
 }
 
 #submitBtn[disabled] {
-    background: var(--body-color);
+    background: var(--container-color);
     color: gray;
     box-shadow: none;
     cursor: default;
@@ -725,7 +808,7 @@ html::-webkit-scrollbar-track {
     width: 100%;
     padding: 15px 15px;
     border-radius: 10px;
-    background: var(--body-color);
+    background: var(--container-color);
 }
 
 #contact-form {
@@ -740,7 +823,7 @@ html::-webkit-scrollbar-track {
     border-radius: 10px;
     padding: 15px 15px;
     width: 100%;
-    background: var(--body-color);
+    background: var(--container-color);
     height: 300px;
     max-height: auto;
     color: var(--text-color);
@@ -765,7 +848,7 @@ html::-webkit-scrollbar-track {
 .end-bar {
     min-height: 15svh;
     width: 100dvw;
-    background: var(--body-color);
+    background: var(--container-color);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -808,16 +891,19 @@ html::-webkit-scrollbar-track {
 
 #back-to-top {
     border-radius: 7px;
-    background: var(--container-color);
+    background: var(--first-color);
     padding: 5px 10px;
     font-size: var(--h2-font-size);
-    color: var(--first-color);
+    color: var(--container-color);
     cursor: pointer;
-    transition: 0.6s;
+    transition: 0.4s;
+    position: fixed;
+    bottom: -100%;
+    right: 3rem;
 }
 
-#back-to-top:hover {
-    transform: translateY(-10px);
+#back-to-top.active {
+    bottom: 3rem;
 }
 
 .popUp {
@@ -896,7 +982,7 @@ html::-webkit-scrollbar-track {
         width: auto;
     }
 }
-@media screen and (max-width:820px) {
+@media screen and (max-width:925px) {
     html::-webkit-scrollbar {
         width: 0;
     }
@@ -912,7 +998,7 @@ html::-webkit-scrollbar-track {
         position: fixed;
         flex-direction: column;
         justify-content: center;
-        row-gap: 0.8rem;
+        row-gap: 0rem;
         background: black;
         z-index: 1000;
         border-radius: 15px;
@@ -921,8 +1007,12 @@ html::-webkit-scrollbar-track {
         overflow: hidden;
         transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
     }
+    .nav-link > *:nth-child(n + 2) {
+        margin-top: 0.8rem;
+    }
     .navlinkactivated {
-        height: 330px;
+        height: 365px;
+        padding-block: 0.7rem;
     }
 }
 @media screen and (max-width:750px) {
@@ -1014,6 +1104,13 @@ html::-webkit-scrollbar-track {
     }
     .end-title > * {
         text-align: center;
+    }
+    #back-to-top {
+        bottom: -100%;
+        right: 2rem;
+    }
+    #back-to-top.active {
+        bottom: 2rem;
     }
 }
 @media screen and (max-width:250px) {

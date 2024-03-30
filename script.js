@@ -6,9 +6,16 @@ let lastScroll = 0;
 const slides = document.querySelectorAll('.whole .slidez');
 const navLinks = document.querySelectorAll('.nav-link .nav-item');
 const popUps = document.querySelectorAll('.popUp');
+const backToTop = document.getElementById('back-to-top');
 let currentSection = 'home';
 
 window.addEventListener('scroll', () => {
+    if (window.scrollY >= 50) {
+        backToTop.classList.add('active');
+    } else {
+        backToTop.classList.remove('active');
+    }
+
     if (window.scrollY > lastScroll) {
         header.classList.add('scrolled');
         navBar.classList.remove('navlinkactivated');
@@ -18,7 +25,7 @@ window.addEventListener('scroll', () => {
     lastScroll = window.scrollY;
 
     slides.forEach(slide => {
-        if (window.scrollY >= slide.offsetTop - 150 && window.scrollY < slide.offsetTop + slide.offsetHeight) {
+        if (window.scrollY >= slide.offsetTop - 250 && window.scrollY < slide.offsetTop + slide.offsetHeight) {
             currentSection = slide.getAttribute('id');
         }
     });
@@ -32,8 +39,7 @@ window.addEventListener('scroll', () => {
         link.addEventListener('click', () => {
             navBar.classList.remove('navlinkactivated');
         })
-    })
-
+    }) 
     reveal();
 })
 
