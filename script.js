@@ -46,10 +46,10 @@ window.addEventListener('scroll', () => {
 /* ========================= REVEAL POPUP WHEN SCROLLING ========================= */
 function reveal() {
     let cutOff = 0;
-    if (window.matchMedia('(max-width: 750px)').matches) {
-        cutOff = 50;
-    } else if (window.matchMedia('(max-width: 470px)').matches) {
+    if (window.matchMedia('(max-width: 470px)').matches) {
         cutOff = 0;
+    } else if (window.matchMedia('(max-width: 750px)').matches) {
+        cutOff = 50;
     } else {
         cutOff = 120;
     }

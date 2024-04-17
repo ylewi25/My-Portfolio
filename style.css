@@ -478,6 +478,10 @@ html::-webkit-scrollbar-track {
     width: 65px;
 }
 
+#next {
+    width: 100px;
+}
+
 /* =========================== SERVICE SLIDE ============================== */
 .service-slide {
     width: 100dvw;
